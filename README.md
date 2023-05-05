@@ -1,5 +1,3 @@
-# 휘트니스 회원 관리 프로그램
-
 # 💪 HGMP: Handong Gym Management Program 💪
 
 <br>
