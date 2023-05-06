@@ -1,4 +1,4 @@
-# 💪 HGMP: Handong Gym Management Program 💪
+# ![header](https://capsule-render.vercel.app/api?type=rounded&text=HGMP&fontAlign=25&fontSize=60&desc=Handong%20Gym%20Management%20Program&descAlign=60&descAlignY=50&color=0:feac5e,50:c779d0,100:4bc0c8&fontColor=ffffff&animation=twinkling)
 
 <br>
 
@@ -15,12 +15,10 @@
 1. 관리자 모드 
 * 헬스장을 운영하는 관장 또는 관리자들이 접속하여 관리할 수 있는 모드
 - 관리자 비밀번호로 로그인 가능.
-- 전체적인 회원 리스트와 그에 관한 정보를 관리 할 수 있는 기능.
             
 2. 회원 모드 
 * 헬스장을 이용하는 회원이 접속하여 관리할 수 있는 모드.
 - 자신의 유저 아이디로 로그인 가능.
-- 자신의 정보 조회 및 수정할 수 있는 기능
 
 <br>
 
