@@ -1,15 +1,15 @@
-# ![header](https://capsule-render.vercel.app/api?type=rounded&text=HGMP&fontAlign=25&fontSize=60&desc=Handong%20Gym%20Management%20Program&descAlign=60&descAlignY=50&color=0:feac5e,50:c779d0,100:4bc0c8&fontColor=ffffff&animation=twinkling)
+# ![header](https://capsule-render.vercel.app/api?type=rounded&text=GMP&fontAlign=25&fontSize=60&desc=Gym%20Management%20Program&descAlign=60&descAlignY=50&color=0:feac5e,50:c779d0,100:4bc0c8&fontColor=ffffff&animation=twinkling)
 
 <br>
 
-## 🔎 HGMP 주제
+## 🔎 GMP 주제
 ![heart-7834308_1920](https://user-images.githubusercontent.com/122343583/236629144-a6ceaad3-480a-4d6c-983b-886da37a3a28.jpg)
 
 * 헬스장 회원 데이터를 관리하는 프로그램
 
 <br>
 
-## 📚 HGMP에 대한 소개
+## 📚 GMP에 대한 소개
 💪 HGMP는 헬스장 회원 데이터를 관리하는 프로그램으로서, 두 가지 모드를 지원합니다.
 
 1. 관리자 모드 
@@ -22,7 +22,7 @@
 
 <br>
 
-## ⚙️ HGMP에서 제공될 상세 기능
+## ⚙️ GMP에서 제공될 상세 기능
 관리자모드와 회원모드가 구분된 프로그램으로 구현 예정
 
 <br>
@@ -33,7 +33,7 @@
 
 <br>
   
-## 💡 HGMP 프로그램 흐름 계획
+## 💡 GMP 프로그램 흐름 계획
 ![flow](https://user-images.githubusercontent.com/85253115/236378391-8abf09b2-c13c-45a0-8459-02551394fa90.png)
 
 <br>
