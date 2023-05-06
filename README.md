@@ -3,7 +3,8 @@
 <br>
 
 ## 🔎 HGMP 주제
-https://media.istockphoto.com/id/1090945710/ko/벡터/아령-아이콘-만화-스타일.webp?s=612x612&w=is&k=20&c=Nyt0lT6F_dgVMOawZ1Io0k4IZtFaUvCE_AJ4QIzhT2s=
+![heart-7834308_1920](https://user-images.githubusercontent.com/122343583/236629144-a6ceaad3-480a-4d6c-983b-886da37a3a28.jpg)
+
 * 헬스장 회원 데이터를 관리하는 프로그램
 
 <br>
