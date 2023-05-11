@@ -28,11 +28,32 @@ int first_selectMenu() {
 }
 
 int manager_selectMenu() {
+    int menu;
     printf("\n관리자 모드\n");
-    return 1;
+    printf("1. 전체 회원 조회\n");
+    printf("2. 회원 정보 추가\n");
+    printf("3. 회원 정보 수정\n");
+    printf("4. 회원 정보 삭제\n");
+    printf("5. 파일 저장\n");
+    printf("6. 회원 검색\n");
+    printf("0. 종료\n\n");
+    printf("=> 원하는 메뉴는? ");
+    scanf("%d", &menu);
+    return menu;
 }
 
 int user_selectMenu() {
+    int menu;
     printf("\n회원 모드\n");
+    int menu;
+    printf("\n회원 모드\n");
+    printf("1. 회원 정보 조회\n"); // readOneUser 실행(로그인한 한명의 회원 정보만 보여줌)
+    printf("2. 회원 정보 수정\n");
+    printf("3. 수업 신청\n");
+    printf("4. 파일 저장\n");
+    printf("0. 종료\n\n");
+    printf("=> 원하는 메뉴는? ");
+    scanf("%d", &menu);
+    return menu;
     return 1;
 }
