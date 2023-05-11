@@ -57,3 +57,18 @@ int user_selectMenu() {
     return menu;
     return 1;
 }
+
+int addUser(User *u[], int num){
+    u[num] = (User *)malloc(sizeof(User));
+
+    printf("이름은?");
+    scanf("%s", u[num]->name);
+    printf("사용자 ID는?");
+    scanf("%s", u[num]->ID);
+    printf("수강 중인 강좌는?");
+    scanf("%s",u[num]->class_list);
+    printf("남은 일수는?");
+    scanf("%d", u[num]->day);
+    
+    return 1;
+}
