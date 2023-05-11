@@ -1,7 +1,7 @@
 typedef struct{
     char name[20];
     char ID[20];
-    int class_list[3];
+    char class_list[20];
     int day;
 }User;
 
