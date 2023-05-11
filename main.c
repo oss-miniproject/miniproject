@@ -2,6 +2,7 @@
 #include "GMP.h"
 
 int main() {
+    User *u_list[100];
     int mode;
     int manager_mode;
     int user_mode;
