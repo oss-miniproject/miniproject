@@ -4,6 +4,7 @@
 #include "GMP.h"
 
 int first_selectMenu();   // 관리자 모드와 사용자모드 구분
+int user_login(); //회원모드 접속 로그인
 int manager_selectMenu(); // 관리자 모드 메뉴
 int user_selectMenu();    // 사용자 모드 메뉴
 int loadData(User *u[]);  // 관리자 모드와 사용자 메뉴 시작하면 호출
@@ -45,8 +46,6 @@ int manager_selectMenu() {
 int user_selectMenu() {
     int menu;
     printf("\n회원 모드\n");
-    int menu;
-    printf("\n회원 모드\n");
     printf("1. 회원 정보 조회\n"); // readOneUser 실행(로그인한 한명의 회원 정보만 보여줌)
     printf("2. 회원 정보 수정\n");
     printf("3. 수업 신청\n");
@@ -54,8 +53,8 @@ int user_selectMenu() {
     printf("0. 종료\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
+    
     return menu;
-    return 1;
 }
 
 int addUser(User *u[], int num){
@@ -74,12 +73,19 @@ int addUser(User *u[], int num){
 }
 
 void readUser(User *u[], int total){
+    char classOffered[3][30] = {'필라테스', '헬스', 'PT'};
     printf("No Name  ID  class-list  day");
     printf("*********************************\n");
     for(int i = 0; i < total; i++){
         if(u[i] == NULL){
             continue;
         }
-        printf("%d %s %3s %3d",i+1, u[i]->name, u[i]->ID, u[i]->day);
+        printf("%d %s %3s ", i+1, u[i]->name, u[i]->ID);
+        for (int j=0; j<3; j++) {
+            if (u[j]->class_list[j] == 1) {
+                printf("%s ", classOffered[j]);
+            }
+        }
+        printf("%3d\n", u[i]->day);
     }
 }
