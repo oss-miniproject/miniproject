@@ -72,3 +72,14 @@ int addUser(User *u[], int num){
     
     return 1;
 }
+
+void readUser(User *u[], int total){
+    printf("No Name  ID  class-list  day");
+    printf("*********************************\n");
+    for(int i = 0; i < total; i++){
+        if(u[i] == NULL){
+            continue;
+        }
+        printf("%d %s %3s %3d",i+1, u[i]->name, u[i]->ID, u[i]->day);
+    }
+}
