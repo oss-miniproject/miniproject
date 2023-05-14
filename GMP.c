@@ -21,7 +21,7 @@ int addClass(User *u[], int total); // 수업 신청(only 사용자)
 int first_selectMenu() {
     int inputnum;
     printf("\n===== Gym Management Program =====\n");
-    printf("\n1. Admin(관리자)\n2. Member(회원)\n0. Exit & Save(종료 )\n");
+    printf("\n1. Admin(관리자)\n2. Member(회원)\n0. Exit(종료)\n");
     printf("\nSelect Menu > ");
     scanf("%d", &inputnum);
     
@@ -35,9 +35,8 @@ int manager_selectMenu() {
     printf("2. 회원 정보 추가\n");
     printf("3. 회원 정보 수정\n");
     printf("4. 회원 정보 삭제\n");
-    printf("5. 파일 저장\n");
-    printf("6. 회원 검색\n");
-    printf("0. 종료\n\n");
+    printf("5. 회원 검색\n");
+    printf("0. 로그아웃 및 \n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
     return menu;
@@ -50,7 +49,7 @@ int user_selectMenu() {
     printf("1. 회원 정보 조회\n"); // readOneUser 실행(로그인한 한명의 회원 정보만 보여줌)
     printf("2. 회원 정보 수정\n");
     printf("3. 수업 신청\n");
-    printf("0. 로그아웃\n\n");
+    printf("0. 로그아웃 및 저장\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
     
