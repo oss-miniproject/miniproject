@@ -107,3 +107,20 @@ int selectUser(User *u[],int total){
     scanf("%d",&number);
     return number;
 }
+
+int updateUser(User *u[], int total){
+    int number;
+    number = selectUser(u,total);
+    if(number == 0){
+        return 0; // 0번 누르면 종료
+    }
+    printf("이름은?");
+    scanf("%s", u[number]->name);
+    printf("사용자 ID는?");
+    scanf("%s", u[number]->ID);
+    printf("수강 중인 강좌는?");
+    scanf("%d %d %d", &u[number]->class_list[0], &u[number]->class_list[1], &u[number]->class_list[2]);
+    printf("남은 일수는?");
+    scanf("%d", &u[number]->day);
+    return 1;
+}
