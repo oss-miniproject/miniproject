@@ -21,7 +21,7 @@ int addClass(User *u[], int total); // 수업 신청(only 사용자)
 int first_selectMenu() {
     int inputnum;
     printf("\n===== Gym Management Program =====\n");
-    printf("\n1. Admin(관리자)\n2. Member(회원)\n0. Exit(종료)\n");
+    printf("\n1. Admin(관리자)\n2. Member(회원)\n0. Exit & Save(종료 )\n");
     printf("\nSelect Menu > ");
     scanf("%d", &inputnum);
     
@@ -100,4 +100,11 @@ void saveData(User *u[], int total) {
 
 void readOneUser(User *u[]) {
 
+}
+int selectUser(User *u[],int total){
+    readUser(u,total);
+    int number;
+    printf("\n번호는 (취소 : 0)?");
+    scanf("%d",&number);
+    return number;
 }
