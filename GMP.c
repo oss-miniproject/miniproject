@@ -67,8 +67,13 @@ int addUser(User *u[], int num) {
     scanf("%s", u[num]->name);
     printf("사용자 ID는?");
     scanf("%s", u[num]->ID);
-    printf("수강 중인 강좌는?");
+    printf("수강 중인 강좌는? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
+    printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0)");
     scanf("%d %d %d", &u[num]->class_list[0], &u[num]->class_list[1], &u[num]->class_list[2]);
+    if(u[num]->class_list[0] > 1 || u[num]->class_list[1] > 1 || u[num]->class_list[2] > 1){
+        printf("숫자 0 또는 1로 다시 입력하시오.\n");
+        return 0;
+    }
     printf("남은 일수는?");
     scanf("%d", &u[num]->day);
     
@@ -125,8 +130,13 @@ int updateUser(User *u[], int total){
     scanf("%s", u[number]->name);
     printf("사용자 ID는?");
     scanf("%s", u[number]->ID);
-    printf("수강 중인 강좌는?");
+    printf("수강 중인 강좌는? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
+    printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0)");
     scanf("%d %d %d", &u[number]->class_list[0], &u[number]->class_list[1], &u[number]->class_list[2]);
+    if(u[num]->class_list[0] > 1 || u[num]->class_list[1] > 1 || u[num]->class_list[2] > 1){
+        printf("숫자 0 또는 1로 다시 입력하시오.\n");
+        return 0;
+    }
     printf("남은 일수는?");
     scanf("%d", &u[number]->day);
     return 1;
