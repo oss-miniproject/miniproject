@@ -62,7 +62,7 @@ int main() {
                     while(1) {
                         user_mode = user_selectMenu();
                         if (user_mode == 1) {
-                            readOneUser(&u_list[uLogin]);
+                            readOneUser(&u_list,uLogin);
                         }
                         else if (user_mode == 2) {
 
