@@ -124,3 +124,24 @@ int updateUser(User *u[], int total){
     scanf("%d", &u[number]->day);
     return 1;
 }
+
+int deleteUser(User *u[], int total){
+    int number;
+    int check;
+    number = selectUser(u,total);
+    if(number == 0){
+        return 0;
+    }
+    else{
+        printf("정말로 삭제하시겠습니까? (삭제 1)\n");
+        scanf("%d",check);
+        if(check == 1){
+            free(u[number-1]);
+            u[number-1] = NULL;
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+}
