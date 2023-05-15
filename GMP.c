@@ -36,7 +36,7 @@ int manager_selectMenu() {
     printf("3. 회원 정보 수정\n");
     printf("4. 회원 정보 삭제\n");
     printf("5. 회원 검색\n");
-    printf("0. 로그아웃 및 \n\n");
+    printf("0. 로그아웃 및 저장\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
     return menu;
