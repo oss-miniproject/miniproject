@@ -15,7 +15,7 @@ int updateUser(User *u[], int total); // 회원 정보 수정 (관리자 and 사
 int deleteUser(User *u[], int total); // 회원 삭제 (only 관리자)
 void saveData(User *u[], int total);  // 회원 정보 파일에 저장 (관리자 and 사용자)
 void searchData(User *u[], int total); // 회원 검색 (only 관리자)
-void readOneUser(User *u[]); // 한명의 회원 정보만 보여줌
+void readOneUser(User *u[],int num); // 한명의 회원 정보만 보여줌
 int addClass(User *u[], int total); // 수업 신청(only 사용자)
 
 int first_selectMenu() {
@@ -97,8 +97,15 @@ void saveData(User *u[], int total) {
     
 }
 
-void readOneUser(User *u[]) {
-
+void readOneUser(User *u[],int num) {
+    char classOffered[3][40] = {"필라테스", "헬스", "PT"};
+    printf("%d %s %3s ", num+1, u[num]->name, u[num]->ID);
+        for (int j=0; j<3; j++) {
+            if (u[j]->class_list[j] == 1) {
+                printf("%s ", classOffered[j]);
+            }
+        }
+        printf("%3d\n", u[num]->day);
 }
 int selectUser(User *u[],int total){
     readUser(u,total);
@@ -145,3 +152,5 @@ int deleteUser(User *u[], int total){
         }
     }
 }
+
+    
