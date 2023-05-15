@@ -153,4 +153,22 @@ int deleteUser(User *u[], int total){
     }
 }
 
-    
+void searchData(User *u[], int total){
+    int num = 0;
+    char search_name[20];
+
+    printf("검색할 이름은?");
+    scanf("%s", search_name);
+
+    for(int i = 0 ; i < total; i++){
+        if(u[i] == NULL) continue;
+        if(strstr(u[i]->name,search_name)){
+            readOneScore(u,i);
+            num++;
+        }
+    }
+    if(num == 0){
+        printf("=>검색된 데이터 없음");
+        printf("\n");
+    }
+}
