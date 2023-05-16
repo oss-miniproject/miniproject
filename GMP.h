@@ -19,5 +19,4 @@ int updateUser(User *u[], int total); // 회원 정보 수정 (관리자 and 사
 int deleteUser(User *u[], int total); // 회원 삭제 (only 관리자)
 void saveData(User *u[], int total);  // 회원 정보 파일에 저장 (관리자 and 사용자)
 void searchData(User *u[], int total); // 회원 검색 (only 관리자)
-void readOneUser(User *u[],int num); // 한명의 회원 정보만 보여줌
 int addClass(User *u[], int total); // 수업 신청(only 사용자)

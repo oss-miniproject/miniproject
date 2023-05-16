@@ -3,16 +3,17 @@
 
 int main() {
     User *u_list[100];
-    int mode, manager_mode, user_mode, count, uLogin;
+    int mode, manager_mode, user_mode, count, index, uLogin;
 
     count = loadData(u_list);
+    index = count;
 
     while(1) {
         mode = first_selectMenu();
         if (mode == 1) {
             manager_mode = manager_selectMenu();
             if(manager_mode == 0){
-                saveData(u_list, count);
+                saveData(u_list, index);
                 printf("\n로그아웃 되었습니다!\n");
                 break;
             }
@@ -23,22 +24,21 @@ int main() {
                 }
             }
             if(manager_mode == 1) {
-                listUser(u_list, count);
+                listUser(u_list, index);
             }
 
             else if (manager_mode == 2) {
-                if(addUser(u_list,count) == 0){
+                if(addUser(u_list, index++) == 0){
                     continue;
                 }
                 else{
                     count++;
-                    printf("0 %s %3s ",u_list[0]->name, u_list[0]->ID);
                     printf("=> 추가됨\n");
                 }
             }
 
             else if (manager_mode == 3){
-                if(updateUser(u_list,count) == 0){
+                if(updateUser(u_list, index) == 0){
                     continue;
                 }
                 else{
@@ -46,15 +46,16 @@ int main() {
                 }
             }
             else if (manager_mode == 4){
-                if(deleteUser(u_list,count) == 0){
+                if(deleteUser(u_list, index) == 0){
                     continue;
                 }
                 else{
                     printf("=> 삭제됨\n");
+                    count--;
                 }
             }
             else if(manager_mode == 5){
-                searchData(u_list,count);
+                searchData(u_list, index);
             }
         }
         else if (mode == 2) {
@@ -67,7 +68,7 @@ int main() {
                     while(1) {
                         user_mode = user_selectMenu();
                         if (user_mode == 1) {
-                            readOneUser(u_list, uLogin);
+                            readUser(*u_list[uLogin]);
                         }
                         else if (user_mode == 2) {
 

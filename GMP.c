@@ -16,7 +16,6 @@ int updateUser(User *u[], int total); // 회원 정보 수정 (관리자 and 사
 int deleteUser(User *u[], int total); // 회원 삭제 (only 관리자)
 void saveData(User *u[], int total);  // 회원 정보 파일에 저장 (관리자 and 사용자)
 void searchData(User *u[], int total); // 회원 검색 (only 관리자)
-void readOneUser(User *u[], int num); // 한명의 회원 정보만 보여줌
 int addClass(User *u[], int total); // 수업 신청(only 사용자)
 
 int first_selectMenu() {
@@ -149,21 +148,10 @@ void saveData(User *u[], int total) {
     printf("저장됨!\n");
 }
 
-void readOneUser(User *u[], int num) {
-    char classOffered[3][40] = {"필라테스", "헬스", "PT"};
-    printf("%d %s %3s ", num+1, u[num]->name, u[num]->ID);
-        for (int j=0; j<3; j++) {
-            if (u[j]->class_list[j] == 1) {
-                printf("%s ", classOffered[j]);
-            }
-        }
-        printf("%3d\n", u[num]->day);
-}
-
 int selectUser(User *u[],int total){
     listUser(u,total);
     int number;
-    printf("\n번호는 (취소 : 0)?");
+    printf("\n번호는 (취소 : 0)? ");
     scanf("%d",&number);
     return number;
 }
@@ -174,19 +162,19 @@ int updateUser(User *u[], int total){
     if(number == 0){
         return 0; // 0번 누르면 종료
     }
-    printf("이름은?");
-    scanf("%s", u[number]->name);
-    printf("사용자 ID는?");
-    scanf("%s", u[number]->ID);
+    printf("이름은? ");
+    scanf("%s", u[number-1]->name);
+    printf("사용자 ID는? ");
+    scanf("%s", u[number-1]->ID);
     printf("수강 중인 강좌는? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
-    printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0)");
-    scanf("%d %d %d", &u[number]->class_list[0], &u[number]->class_list[1], &u[number]->class_list[2]);
-    if(u[number]->class_list[0] > 1 || u[number]->class_list[1] > 1 || u[number]->class_list[2] > 1){
+    printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0) ");
+    scanf("%d %d %d", &u[number-1]->class_list[0], &u[number-1]->class_list[1], &u[number-1]->class_list[2]);
+    if(u[number-1]->class_list[0] > 1 || u[number-1]->class_list[1] > 1 || u[number-1]->class_list[2] > 1){
         printf("숫자 0 또는 1로 다시 입력하시오.\n");
         return 0;
     }
-    printf("남은 일수는?");
-    scanf("%d", &u[number]->day);
+    printf("남은 일수는? ");
+    scanf("%d", &u[number-1]->day);
     return 1;
 }
 
@@ -198,7 +186,7 @@ int deleteUser(User *u[], int total){
         return 0;
     }
     else{
-        printf("정말로 삭제하시겠습니까? (삭제 1)\n");
+        printf("\n정말로 삭제하시겠습니까? (삭제 1) ");
         scanf("%d", &check);
         if(check == 1){
             free(u[number-1]);
@@ -215,13 +203,13 @@ void searchData(User *u[], int total){
     int num = 0;
     char search_name[20];
 
-    printf("검색할 이름은?");
+    printf("검색할 이름은? ");
     scanf("%s", search_name);
 
     for(int i = 0 ; i < total; i++){
         if(u[i] == NULL) continue;
         if(strstr(u[i]->name,search_name)){
-            readOneUser(u, i);
+            readUser(*u[i]);
             num++;
         }
     }
