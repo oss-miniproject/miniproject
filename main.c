@@ -23,8 +23,8 @@ int main() {
                         continue;
                 }
             }
-            else if(manager_mode == 1) {
-                readUser(u_list, index);
+            if(manager_mode == 1) {
+                readUser(u_list, count);
             }
 
             else if (manager_mode == 2) {
@@ -33,6 +33,7 @@ int main() {
                 }
                 else{
                     count++;
+                    printf("0 %s %3s ",u_list[0]->name, u_list[0]->ID);
                     printf("=> 추가됨\n");
                 }
             }
