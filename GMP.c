@@ -109,6 +109,12 @@ int addUser(User *u[], int num) {
     scanf("%s", u[num]->name);
     printf("사용자 ID는? ");
     scanf("%s", u[num]->ID);
+	for(int i = 0; i <index; i++){
+        if(strcmp(u[i]->ID,u[num]->ID)){
+            printf("이미 존재하는 ID 입니다. 다시 시도해주세요.\n");
+            return 0;
+        }
+    }
     printf("수강 중인 강좌는? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
     printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0) ");
     scanf("%d %d %d", &u[num]->class_list[0], &u[num]->class_list[1], &u[num]->class_list[2]);
