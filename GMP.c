@@ -9,7 +9,8 @@ int manager_selectMenu(); // 관리자 모드 메뉴
 int user_selectMenu();    // 사용자 모드 메뉴
 int loadData(User *u[]);  // 관리자 모드와 사용자 메뉴 시작하면 호출
 int addUser(User *u[],int num); // 신규 회원 추가(only 관리자)
-void readUser(User *u[], int total); // 전체 회원 정보 조회(only 관리자)
+void readUser(User u);
+void listUser(User *u[], int total); // 전체 회원 정보 조회(only 관리자)
 int selectUser(User *u[],int total); // 원하는 사용자 선택
 int updateUser(User *u[], int total); // 회원 정보 수정 (관리자 and 사용자)
 int deleteUser(User *u[], int total); // 회원 삭제 (only 관리자)
@@ -109,22 +110,29 @@ int addUser(User *u[], int num) {
     return 1;
 }
 
-void readUser(User *u[], int total) {
+void readUser(User u) {
     char classOffered[3][40] = {"필라테스", "헬스", "PT"};
+    printf("%s %3s ",u.name, u.ID);
+    for (int j=0; j<3; j++) {
+        if (u.class_list[j] == 1) {
+            printf("%s ", classOffered[j]);
+        }
+    }
+    printf("%3d\n", u.day);
+}
+
+void listUser(User *u[], int total) {
     printf("No Name  ID  class-list  day");
-    printf("*********************************\n");
-    for(int i = 0; i < total; i++){
+    printf("\n*********************************\n");
+
+    for(int i=0; i<total; i++) {
         if(u[i] == NULL){
             continue;
         }
-        printf("%d %s %3s ", i+1, u[i]->name, u[i]->ID);
-        for (int j=0; j<3; j++) {
-            if (u[j]->class_list[j] == 1) {
-                printf("%s ", classOffered[j]);
-            }
-        }
-        printf("%3d\n", u[i]->day);
+        printf("%2d ", i+1);
+        readUser(*u[i]);
     }
+    printf("\n");
 }
 
 void saveData(User *u[], int total) {
@@ -153,7 +161,7 @@ void readOneUser(User *u[], int num) {
 }
 
 int selectUser(User *u[],int total){
-    readUser(u,total);
+    listUser(u,total);
     int number;
     printf("\n번호는 (취소 : 0)?");
     scanf("%d",&number);

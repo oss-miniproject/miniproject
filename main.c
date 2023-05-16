@@ -3,17 +3,16 @@
 
 int main() {
     User *u_list[100];
-    int mode, manager_mode, user_mode, count, index, uLogin;
+    int mode, manager_mode, user_mode, count, uLogin;
 
     count = loadData(u_list);
-    index = count;
 
     while(1) {
         mode = first_selectMenu();
         if (mode == 1) {
             manager_mode = manager_selectMenu();
             if(manager_mode == 0){
-                saveData(u_list, index);
+                saveData(u_list, count);
                 printf("\n로그아웃 되었습니다!\n");
                 break;
             }
@@ -24,7 +23,7 @@ int main() {
                 }
             }
             if(manager_mode == 1) {
-                readUser(u_list, count);
+                listUser(u_list, count);
             }
 
             else if (manager_mode == 2) {
@@ -74,7 +73,7 @@ int main() {
 
                         }
                         else {
-                            saveData(u_list, index);
+                            saveData(u_list, count);
                             printf("\n로그아웃 되었습니다!\n");
                             break;
                         }

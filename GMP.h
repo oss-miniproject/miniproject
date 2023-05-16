@@ -11,7 +11,8 @@ int manager_selectMenu(); // 관리자 모드 메뉴
 int user_selectMenu();    // 사용자 모드 메뉴
 int loadData(User *u[]);  // 관리자 모드와 사용자 메뉴 시작하면 호출
 int addUser(User *u[],int num); // 신규 회원 추가(only 관리자)
-void readUser(User *u[], int total); // 전체 회원 정보 조회(only 관리자)
+void readUser(User u);
+void listUser(User *u[], int total); // 전체 회원 정보 조회(only 관리자)
 int selectUser(User *u[],int total); // 원하는 사용자 선택
 int updateUser(User *u[], int total); // 회원 정보 수정 (관리자 and 사용자)
 int deleteUser(User *u[], int total); // 회원 삭제 (only 관리자)
