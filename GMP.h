@@ -6,6 +6,7 @@ typedef struct{
 }User;
 
 int first_selectMenu();   // 관리자 모드와 사용자모드 구분
+int manager_login(); // 관리자모드 접속 로그인 - 성공시 1 리턴, 실패시 0 리턴
 int user_login(); //회원모드 접속 로그인 - 리턴값: 회원정보 리스트에서 회원의 index
 int manager_selectMenu(); // 관리자 모드 메뉴
 int user_selectMenu();    // 사용자 모드 메뉴
