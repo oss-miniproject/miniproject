@@ -15,7 +15,7 @@ int updateUser(User *u[], int total); // 회원 정보 수정 (관리자 and 사
 int deleteUser(User *u[], int total); // 회원 삭제 (only 관리자)
 void saveData(User *u[], int total);  // 회원 정보 파일에 저장 (관리자 and 사용자)
 void searchData(User *u[], int total); // 회원 검색 (only 관리자)
-void readOneUser(User *u[],int num); // 한명의 회원 정보만 보여줌
+void readOneUser(User *u[], int num); // 한명의 회원 정보만 보여줌
 int addClass(User *u[], int total); // 수업 신청(only 사용자)
 
 int first_selectMenu() {
@@ -26,6 +26,10 @@ int first_selectMenu() {
     scanf("%d", &inputnum);
     
     return inputnum;
+}
+
+int user_login() {
+    return 1;
 }
 
 int manager_selectMenu() {
@@ -57,24 +61,48 @@ int user_selectMenu() {
 }
 
 int loadData(User *u[]) {
-    return 1;
+    int i = 0;
+
+    FILE *fp = fopen("member.txt", "rt");
+
+    if (fp == NULL) {
+        printf("\n=> 파일 없음\n");
+        return i;
+    }
+    else {
+        while(1) {
+            u[i] = (User *)malloc(sizeof(User));
+            fscanf(fp, "%s", u[i]->name);
+            fscanf(fp, "%s", u[i]->ID);
+            fscanf(fp, "%d", &u[i]->class_list[0]);
+            fscanf(fp, "%d", &u[i]->class_list[1]);
+            fscanf(fp, "%d", &u[i]->class_list[2]);
+            fscanf(fp, "%d", &u[i]->day);
+
+            if(feof(fp)) break;
+            i++;
+        }
+        fclose(fp);
+        printf("=> 로딩 성공!\n");
+        return i;
+    }
 }
 
 int addUser(User *u[], int num) {
     u[num] = (User *)malloc(sizeof(User));
 
-    printf("이름은?");
+    printf("이름은? ");
     scanf("%s", u[num]->name);
-    printf("사용자 ID는?");
+    printf("사용자 ID는? ");
     scanf("%s", u[num]->ID);
     printf("수강 중인 강좌는? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
-    printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0)");
+    printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0) ");
     scanf("%d %d %d", &u[num]->class_list[0], &u[num]->class_list[1], &u[num]->class_list[2]);
     if(u[num]->class_list[0] > 1 || u[num]->class_list[1] > 1 || u[num]->class_list[2] > 1){
         printf("숫자 0 또는 1로 다시 입력하시오.\n");
         return 0;
     }
-    printf("남은 일수는?");
+    printf("남은 일수는? ");
     scanf("%d", &u[num]->day);
     
     return 1;
@@ -99,10 +127,20 @@ void readUser(User *u[], int total) {
 }
 
 void saveData(User *u[], int total) {
-    
+    FILE *fp = fopen("score.txt", "wt");
+
+    for (int i=0; i<total; i++) {
+        if(u[i]==NULL) {
+            continue;
+        }
+        fprintf(fp,"%s %s %d %d %d %d\n", u[i]->name, u[i]->ID, u[i]->class_list[0], u[i]->class_list[1], u[i]->class_list[2], u[i]->day);
+    }
+
+    fclose(fp);
+    printf("저장됨!\n");
 }
 
-void readOneUser(User *u[],int num) {
+void readOneUser(User *u[], int num) {
     char classOffered[3][40] = {"필라테스", "헬스", "PT"};
     printf("%d %s %3s ", num+1, u[num]->name, u[num]->ID);
         for (int j=0; j<3; j++) {
@@ -112,6 +150,7 @@ void readOneUser(User *u[],int num) {
         }
         printf("%3d\n", u[num]->day);
 }
+
 int selectUser(User *u[],int total){
     readUser(u,total);
     int number;
@@ -151,7 +190,7 @@ int deleteUser(User *u[], int total){
     }
     else{
         printf("정말로 삭제하시겠습니까? (삭제 1)\n");
-        scanf("%d",check);
+        scanf("%d", &check);
         if(check == 1){
             free(u[number-1]);
             u[number-1] = NULL;
@@ -173,7 +212,7 @@ void searchData(User *u[], int total){
     for(int i = 0 ; i < total; i++){
         if(u[i] == NULL) continue;
         if(strstr(u[i]->name,search_name)){
-            readOneScore(u,i);
+            readOneUser(u, i);
             num++;
         }
     }

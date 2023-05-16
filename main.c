@@ -17,13 +17,17 @@ int main() {
                 printf("\n로그아웃 되었습니다!\n");
                 break;
             }
-            if(user_mode == 1 || user_mode == 3 || user_mode == 4){
+            if(manager_mode == 1 || manager_mode == 3 || manager_mode == 4){
                 if(count == 0){
                     printf("입력된 정보가 없습니다.\n ");
                         continue;
                 }
             }
-            else if (user_mode == 2) {
+            else if(manager_mode == 1) {
+                readUser(u_list, index);
+            }
+
+            else if (manager_mode == 2) {
                 if(addUser(u_list,count) == 0){
                     continue;
                 }
@@ -32,7 +36,8 @@ int main() {
                     printf("=> 추가됨\n");
                 }
             }
-            else if (user_mode == 3){
+
+            else if (manager_mode == 3){
                 if(updateUser(u_list,count) == 0){
                     continue;
                 }
@@ -40,7 +45,7 @@ int main() {
                     printf("=> 수정됨\n");
                 }
             }
-            else if (user_mode == 4){
+            else if (manager_mode == 4){
                 if(deleteUser(u_list,count) == 0){
                     continue;
                 }
@@ -48,7 +53,7 @@ int main() {
                     printf("=> 삭제됨\n");
                 }
             }
-            else if(user_mode == 5){
+            else if(manager_mode == 5){
                 searchData(u_list,count);
             }
         }
@@ -62,7 +67,7 @@ int main() {
                     while(1) {
                         user_mode = user_selectMenu();
                         if (user_mode == 1) {
-                            readOneUser(&u_list,uLogin);
+                            readOneUser(u_list, uLogin);
                         }
                         else if (user_mode == 2) {
 
