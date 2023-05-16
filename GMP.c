@@ -4,6 +4,7 @@
 #include "GMP.h"
 
 int first_selectMenu();   // 관리자 모드와 사용자모드 구분
+int manager_login();
 int user_login(); //회원모드 접속 로그인 - 리턴값: 회원정보 리스트에서 회원의 index
 int manager_selectMenu(); // 관리자 모드 메뉴
 int user_selectMenu();    // 사용자 모드 메뉴
@@ -26,6 +27,18 @@ int first_selectMenu() {
     scanf("%d", &inputnum);
     
     return inputnum;
+}
+
+int manager_login(){
+	char ID[40];
+	printf("관리자 ID를 입력하시오 (기본값: admin)  ");
+	scanf("%s",ID);
+	if(strstr(ID,"admin")){
+		return 1;
+	}
+	else{
+		return 0;
+	}
 }
 
 int user_login() {
