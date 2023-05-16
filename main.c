@@ -60,18 +60,24 @@ int main() {
         }
         else if (mode == 2) {
              if (count == 0) {
-                printf("등록된 회원이 없습니다. 관리자에게 문의해주세요!\n");
+                printf("\n등록된 회원이 없습니다. 관리자에게 문의해주세요!\n");
             }
             else {
-                uLogin = user_login();
+                uLogin = user_login(u_list, index);
                 if (uLogin >= 0) {
                     while(1) {
                         user_mode = user_selectMenu();
                         if (user_mode == 1) {
+                            printf("\n");
                             readUser(*u_list[uLogin]);
                         }
                         else if (user_mode == 2) {
-
+                            if (addClass(u_list[uLogin])==0) {
+                                continue;
+                            }
+                            else {
+                                printf("=> 신청됨\n");
+                            }
                         }
                         else {
                             saveData(u_list, count);
@@ -81,12 +87,12 @@ int main() {
                     }
                 }
                 else {
-                    printf("등록되지 않은 회원입니다. 관리자에게 문의해주세요!\n");
+                    printf("\n등록되지 않은 회원입니다. 관리자에게 문의해주세요!\n");
                 }
             }
         }
         else if (mode == 0) {
-            printf("\n프로그램을 종료합니다\n");
+            printf("\n===== 프로그램을 종료합니다 =====\n");
             break;
         }
         else {
