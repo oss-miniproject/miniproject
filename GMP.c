@@ -103,17 +103,25 @@ int loadData(User *u[]) {
 }
 
 int addUser(User *u[], int num) {
+    int flag;
     u[num] = (User *)malloc(sizeof(User));
 
     printf("이름은? ");
     scanf("%s", u[num]->name);
-    printf("사용자 ID는? ");
-    scanf("%s", u[num]->ID);
-	for(int i = 0; i <index; i++){
-        if(strcmp(u[i]->ID,u[num]->ID)){
-            printf("이미 존재하는 ID 입니다. 다시 시도해주세요.\n");
-            return 0;
+    //printf("사용자 ID는? ");
+    //scanf("%s", u[num]->ID);
+    while(1){
+        flag = 0;
+        printf("사용자 ID는? ");
+        scanf("%s", u[num]->ID);
+	    for(int i = 0; i < num; i++){
+            if(strcmp(u[i]->ID, u[num]->ID)==0){
+                printf("중복되는 ID입니다. 다시 입력해주세요.\n");
+                flag=1;
+                break;
+            }
         }
+        if (flag != 1) break;
     }
     printf("수강 중인 강좌는? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
     printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0) ");
