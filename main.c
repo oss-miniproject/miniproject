@@ -80,11 +80,11 @@ int main() {
             }
         }
         else if (mode == 0) {
-            printf("\nGood Bye!\n");
+            printf("\n프로그램을 종료합니다\n");
             break;
         }
         else {
-            printf("\nwrong input!\n");
+            printf("\n잘못된 입력입니다.\n");
         }
     }
 }
