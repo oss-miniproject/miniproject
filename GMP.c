@@ -63,7 +63,7 @@ int user_selectMenu() {
 int loadData(User *u[]) {
     int i = 0;
 
-    FILE *fp = fopen("member.txt", "rt");
+    FILE *fp = fopen("gmp.txt", "rt");
 
     if (fp == NULL) {
         printf("\n=> 파일 없음\n");
@@ -84,6 +84,7 @@ int loadData(User *u[]) {
         }
         fclose(fp);
         printf("=> 로딩 성공!\n");
+        
         return i;
     }
 }
@@ -127,7 +128,7 @@ void readUser(User *u[], int total) {
 }
 
 void saveData(User *u[], int total) {
-    FILE *fp = fopen("score.txt", "wt");
+    FILE *fp = fopen("gmp.txt", "wt");
 
     for (int i=0; i<total; i++) {
         if(u[i]==NULL) {
