@@ -89,6 +89,9 @@ int main() {
                                 printf("=> 신청됨\n");
                             }
                         }
+                        else if (user_mode == 3) {
+                            BmiTester(u_list[uLogin]);
+                        }
                         else {
                             saveData(u_list, count);
                             printf("\n로그아웃 되었습니다!\n");
