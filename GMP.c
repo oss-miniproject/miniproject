@@ -5,7 +5,7 @@
 
 int first_selectMenu();   // 관리자 모드와 사용자모드 구분
 int manager_login();
-int user_login(); //회원모드 접속 로그인 - 리턴값: 회원정보 리스트에서 회원의 index
+int user_login(User *u[], int total); //회원모드 접속 로그인 - 리턴값: 회원정보 리스트에서 회원의 index
 int manager_selectMenu(); // 관리자 모드 메뉴
 int user_selectMenu();    // 사용자 모드 메뉴
 int loadData(User *u[]);  // 관리자 모드와 사용자 메뉴 시작하면 호출
@@ -17,7 +17,7 @@ int updateUser(User *u[], int total); // 회원 정보 수정 (관리자 and 사
 int deleteUser(User *u[], int total); // 회원 삭제 (only 관리자)
 void saveData(User *u[], int total);  // 회원 정보 파일에 저장 (관리자 and 사용자)
 void searchData(User *u[], int total); // 회원 검색 (only 관리자)
-int addClass(User *u[], int total); // 수업 신청(only 사용자)
+int addClass(User *u); // 수업 신청(only 사용자)
 
 int first_selectMenu() {
     int inputnum;
@@ -41,13 +41,25 @@ int manager_login(){
 	}
 }
 
-int user_login() {
-    return 1;
+int user_login(User *u[], int total) {
+    int index = -1;
+    char ID[40];
+    printf("아이디를 입력하세요 > ");
+    scanf("%s", ID);
+
+    for (int i=0; i<total; i++) {
+        if(strcmp(u[i]->ID, ID)==0) {
+            index = i;
+            break;
+        }
+        else continue;
+    }
+    return index;
 }
 
 int manager_selectMenu() {
     int menu;
-    printf("\n관리자 모드\n");
+    printf("\n==== 관리자 모드 ====\n\n");
     printf("1. 전체 회원 조회\n");
     printf("2. 회원 정보 추가\n");
     printf("3. 회원 정보 수정\n");
@@ -62,10 +74,9 @@ int manager_selectMenu() {
 int user_selectMenu() {
     int menu;
    
-    printf("\n회원 모드\n");
+    printf("\n==== 회원 모드 ====\n\n");
     printf("1. 회원 정보 조회\n"); // readOneUser 실행(로그인한 한명의 회원 정보만 보여줌)
-    printf("2. 회원 정보 수정\n");
-    printf("3. 수업 신청\n");
+    printf("2. 수업 신청\n");
     printf("0. 로그아웃 및 저장\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
@@ -103,17 +114,23 @@ int loadData(User *u[]) {
 }
 
 int addUser(User *u[], int num) {
+    int flag;
     u[num] = (User *)malloc(sizeof(User));
 
     printf("이름은? ");
     scanf("%s", u[num]->name);
-    printf("사용자 ID는? ");
-    scanf("%s", u[num]->ID);
-	for(int i = 0; i <index; i++){
-        if(strcmp(u[i]->ID,u[num]->ID)){
-            printf("이미 존재하는 ID 입니다. 다시 시도해주세요.\n");
-            return 0;
+    while(1){
+        flag = 0;
+        printf("사용자 ID는? ");
+        scanf("%s", u[num]->ID);
+	    for(int i = 0; i < num; i++){
+            if(strcmp(u[i]->ID, u[num]->ID)==0){
+                printf("중복되는 ID입니다. 다시 입력해주세요.\n");
+                flag=1;
+                break;
+            }
         }
+        if (flag != 1) break;
     }
     printf("수강 중인 강좌는? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
     printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0) ");
@@ -236,4 +253,15 @@ void searchData(User *u[], int total){
         printf("=>검색된 데이터 없음");
         printf("\n");
     }
+}
+
+int addClass(User *u) {
+    printf("수강하고자 하는 수업은? (해당되는 순서에 0 또는 1을 입력하시오.)\n");
+    printf("1.필라테스 2.헬스 3.PT (ex 헬스 => 0 1 0) ");
+    scanf("%d %d %d", &u->class_list[0],&u->class_list[1], &u->class_list[2]);
+    if(u->class_list[0] > 1 || u->class_list[1] > 1 || u->class_list[2] > 1){
+        printf("숫자 0 또는 1로 다시 입력하시오.\n");
+        return 0;
+    }
+    return 1;
 }
