@@ -21,3 +21,4 @@ void saveData(User *u[], int total);  // 회원 정보 파일에 저장 (관리�
 void searchData(User *u[], int total); // 회원 검색 (only 관리자)
 int addClass(User *u); // 수업 신청(only 사용자)
 void BmiTester(User *u); // 키 몸무게 입력, 비만도 측정 (회원모드 지원)
+int extendUse(User *u); // 사용기한 연장 (사용자))

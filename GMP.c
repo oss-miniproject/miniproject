@@ -19,6 +19,7 @@ void saveData(User *u[], int total);  // 회원 정보 파일에 저장 (관리�
 void searchData(User *u[], int total); // 회원 검색 (only 관리자)
 int addClass(User *u); // 수업 신청(only 사용자)
 void BmiTester(User *u); // 키 몸무게 입력, 비만도 측정 (회원모드 지원)
+int extendUse(User *u); // 사용기한 연장 (사용자))
 
 int first_selectMenu() {
     int inputnum;
@@ -78,7 +79,8 @@ int user_selectMenu() {
     printf("\n==== 회원 모드 ====\n\n");
     printf("1. 회원 정보 조회\n"); // readOneUser 실행(로그인한 한명의 회원 정보만 보여줌)
     printf("2. 수업 신청\n");
-    printf("3. 비만도 검사\n");
+    printf("3. 사용기한 연장\n");
+    printf("4. 비만도 검사\n");
     printf("0. 로그아웃 및 저장\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
@@ -159,7 +161,7 @@ void readUser(User u) {
 }
 
 void listUser(User *u[], int total) {
-    printf("No Name  ID  class-list  day");
+    printf("\nNo | Name | ID | class-list | day");
     printf("\n*********************************\n");
 
     for(int i=0; i<total; i++) {
@@ -183,7 +185,7 @@ void saveData(User *u[], int total) {
     }
 
     fclose(fp);
-    printf("저장됨!\n");
+    printf("\n=>저장됨!\n");
 }
 
 int selectUser(User *u[],int total){
@@ -293,4 +295,12 @@ void BmiTester(User *u){
     if(bmi > 25){
         printf("%s님의 BMI는 %.1f로 비만입니다. ",u->ID,bmi);
     }
+}
+
+int extendUse(User *u) {
+    int inputday;
+    printf("연장 일수 입력 > ");
+    scanf("%d", &inputday);
+    u->day += inputday;
+    return 1;
 }

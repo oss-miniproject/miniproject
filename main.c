@@ -90,6 +90,15 @@ int main() {
                             }
                         }
                         else if (user_mode == 3) {
+                            if (extendUse(u_list[uLogin])==0) {
+                                printf("\n=> 수정실패..\n");
+                                continue;
+                            }
+                            else {
+                                printf("\n=> 수정됨\n");
+                            }
+                        }
+                        else if (user_mode == 4) {
                             BmiTester(u_list[uLogin]);
                         }
                         else {
