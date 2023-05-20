@@ -21,12 +21,12 @@ int main() {
                     manager_mode = manager_selectMenu();
                     if(manager_mode == 0){
                         saveData(u_list, index);
-                        printf("\n로그아웃 되었습니다!\n");
+                        printf("\n=> 로그아웃 되었습니다!\n");
                         break;
                     }
                     if(manager_mode == 1 || manager_mode == 3 || manager_mode == 4){
                         if(count == 0){
-                            printf("입력된 정보가 없습니다.\n ");
+                            printf("\n=> 입력된 정보가 없습니다.\n ");
                                 continue;
                         }
                     }
@@ -36,28 +36,31 @@ int main() {
 
                     else if (manager_mode == 2) {
                         if(addUser(u_list, index++) == 0){
+                            printf("\n=> 추가실패..\n");
                             continue;
                         }
                         else{
                             count++;
-                            printf("=> 추가됨\n");
+                            printf("\n=> 추가완료!\n");
                         }
                     }
 
                     else if (manager_mode == 3){
                         if(updateUser(u_list, index) == 0){
+                            printf("\n=> 수정실패..\n");
                             continue;
                         }
                         else{
-                            printf("=> 수정됨\n");
+                            printf("\n=> 수정완료!\n");
                         }
                     }
                     else if (manager_mode == 4){
                         if(deleteUser(u_list, index) == 0){
+                            printf("\n=> 삭제실패..\n");
                             continue;
                         }
                         else{
-                            printf("=> 삭제됨\n");
+                            printf("=> 삭제완료!\n");
                             count--;
                         }
                     }
@@ -75,6 +78,7 @@ int main() {
             else {
                 uLogin = user_login(u_list, index);
                 if (uLogin >= 0) {
+                    printf("\n%s님 안녕하세요!\n", u_list[uLogin]->name);
                     while(1) {
                         user_mode = user_selectMenu();
                         if (user_mode == 1) {
@@ -83,10 +87,11 @@ int main() {
                         }
                         else if (user_mode == 2) {
                             if (addClass(u_list[uLogin])==0) {
+                                printf("\n=> 신청실패..\n");
                                 continue;
                             }
                             else {
-                                printf("=> 신청됨\n");
+                                printf("\n=> 신청완료!\n");
                             }
                         }
                         else if (user_mode == 3) {
@@ -95,7 +100,7 @@ int main() {
                                 continue;
                             }
                             else {
-                                printf("\n=> 수정됨\n");
+                                printf("\n=> 수정완료!\n");
                             }
                         }
                         else if (user_mode == 4) {
@@ -109,7 +114,7 @@ int main() {
                     }
                 }
                 else {
-                    printf("\n등록되지 않은 회원입니다. 관리자에게 문의해주세요!\n");
+                    printf("\n=> 등록되지 않은 회원입니다. 관리자에게 문의해주세요!\n");
                 }
             }
         }
@@ -118,7 +123,7 @@ int main() {
             break;
         }
         else {
-            printf("\n잘못된 입력입니다.\n");
+            printf("\n=> 잘못된 입력입니다.\n");
         }
     }
 }
