@@ -23,7 +23,7 @@
 <br>
 
 ## ⚙️ GMP에서 제공될 상세 기능
-관리자모드와 회원모드가 구분된 프로그램으로 구현 예정
+관리자모드와 회원모드가 구분된 프로그램으로 구현
 
 <br>
 
@@ -33,7 +33,7 @@
 
 <br>
   
-## 💡 GMP 프로그램 흐름 계획
+## 💡 GMP 프로그램 흐름
 ![flow](https://user-images.githubusercontent.com/85253115/236378391-8abf09b2-c13c-45a0-8459-02551394fa90.png)
 
 <br>
@@ -52,6 +52,6 @@
 |---:|:---:|:---:|
 |Image|![seongju](https://user-images.githubusercontent.com/85253115/236375546-38fa6d55-f805-409c-be64-3e8ceda2150b.jpg)|![zoeyoon](https://user-images.githubusercontent.com/85253115/235873631-b0dc1c8b-48d1-42c0-9045-f7358c70ce90.jpg)|
 |Name|<a href="https://github.com/seongju1015">이성주 (Seongju Lee)</a>|<a href="https://github.com/zoeyoon">윤소예 (Soye Yoon)</a>|
-|In charge of|<ul><li>관리자 모드 구현</li><li>README.md 파일 작성</li><ul>|<ul><li>회원 모드 구현</li><li>README.md 파일 작성</li><ul>|
+|Role|<ul><li>관리자 모드 구현</li><li>README.md 파일 작성</li><li>전체 코드 디버깅</li><li>Wiki 작성</li></li><ul>|<ul><li>회원 모드 구현</li><li>README.md 파일 작성</li><li>전체 코드 디버깅</li><li>Wiki 작성</li><ul>|
 
 
